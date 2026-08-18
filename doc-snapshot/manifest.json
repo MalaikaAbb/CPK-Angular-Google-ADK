@@ -1,0 +1,126 @@
+{
+  "schema": 1,
+  "docsRoot": "https://docs.copilotkit.ai/angular/google-adk",
+  "syncedAt": "2026-08-18T06:50:34.566Z",
+  "pages": {
+    "/angular/google-adk": {
+      "file": "angular__google-adk.md",
+      "sha256": "11cb171f45afba92c7e1a7c2b5985dfe2dc4b9ccb991e2fc388912793f10461e",
+      "bytes": 8293,
+      "lines": 218,
+      "routes": [
+        "/",
+        "/doc-sync"
+      ],
+      "status": "ok",
+      "age": 0,
+      "date": "Tue, 18 Aug 2026 06:50:35 GMT"
+    },
+    "/angular/google-adk/guides/a2ui": {
+      "file": "angular__google-adk__guides__a2ui.md",
+      "sha256": "dacf64a8c68f8d506962d43065f026f40daccc3cdc18dd2c5fd95489d9e1a397",
+      "bytes": 5849,
+      "lines": 195,
+      "routes": [
+        "/a2ui"
+      ],
+      "status": "ok",
+      "age": 0,
+      "date": "Tue, 18 Aug 2026 06:50:35 GMT"
+    },
+    "/angular/google-adk/guides/chat-ui": {
+      "file": "angular__google-adk__guides__chat-ui.md",
+      "sha256": "797eaef0efe646911453e557e29af3b673859cf354f8134a15474377d3c5e007",
+      "bytes": 5137,
+      "lines": 178,
+      "routes": [
+        "/chat-ui"
+      ],
+      "status": "ok",
+      "age": 0,
+      "date": "Tue, 18 Aug 2026 06:50:35 GMT"
+    },
+    "/angular/google-adk/guides/frontend-tools-generative-ui": {
+      "file": "angular__google-adk__guides__frontend-tools-generative-ui.md",
+      "sha256": "085ddd26b3668b60566435e06af0606c2a1dae5b41c3a08113848bee75eed1b6",
+      "bytes": 5732,
+      "lines": 178,
+      "routes": [
+        "/frontend-tools-generative-ui"
+      ],
+      "status": "ok",
+      "age": 0,
+      "date": "Tue, 18 Aug 2026 06:50:35 GMT"
+    },
+    "/angular/google-adk/guides/human-in-the-loop": {
+      "file": "angular__google-adk__guides__human-in-the-loop.md",
+      "sha256": "b696677488fd25878e25617d9ff3ec79ef3dc929a68772b5b59e54de92d7f1d7",
+      "bytes": 7176,
+      "lines": 227,
+      "routes": [
+        "/human-in-the-loop"
+      ],
+      "status": "ok",
+      "age": 0,
+      "date": "Tue, 18 Aug 2026 06:50:35 GMT"
+    },
+    "/angular/google-adk/guides/shared-state": {
+      "file": "angular__google-adk__guides__shared-state.md",
+      "sha256": "8d93b0de78e6601c9bd37409dcb3999c6e17a2fd2f66f66aef51ed3371a87819",
+      "bytes": 4726,
+      "lines": 151,
+      "routes": [
+        "/shared-state"
+      ],
+      "status": "ok",
+      "age": 0,
+      "date": "Tue, 18 Aug 2026 06:50:35 GMT"
+    },
+    "/angular/google-adk/guides/threads-memory-attachments-headless": {
+      "file": "angular__google-adk__guides__threads-memory-attachments-headless.md",
+      "sha256": "c319b8e857f8fe482ea09aafe717f24db645cb40d5b905156abd2e324c6d45ab",
+      "bytes": 8940,
+      "lines": 302,
+      "routes": [
+        "/threads",
+        "/memory",
+        "/attachments",
+        "/headless"
+      ],
+      "status": "ok",
+      "age": 0,
+      "date": "Tue, 18 Aug 2026 06:50:35 GMT"
+    },
+    "/angular/google-adk/guides/voice-multimodal": {
+      "file": "angular__google-adk__guides__voice-multimodal.md",
+      "sha256": "2f023b59764f6a755d9cdafe13eae916d6ff29adfdb544751ca4e08769abae6a",
+      "bytes": 3794,
+      "lines": 111,
+      "routes": [
+        "/voice-multimodal"
+      ],
+      "status": "ok",
+      "age": 0,
+      "date": "Tue, 18 Aug 2026 06:50:35 GMT"
+    },
+    "/angular/google-adk/quickstart": {
+      "file": "angular__google-adk__quickstart.md",
+      "sha256": "11cb171f45afba92c7e1a7c2b5985dfe2dc4b9ccb991e2fc388912793f10461e",
+      "bytes": 8293,
+      "lines": 218,
+      "routes": [
+        "/quickstart"
+      ],
+      "status": "ok",
+      "age": 0,
+      "date": "Tue, 18 Aug 2026 06:50:35 GMT"
+    }
+  },
+  "sitemap": {
+    "fetchedAt": "2026-08-18T06:50:34.566Z",
+    "urlsUnderRoot": 2,
+    "knownUnmapped": [
+      "https://docs.copilotkit.ai/angular/google-adk/shared-state/workflow-execution"
+    ]
+  }
+}
