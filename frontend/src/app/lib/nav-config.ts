@@ -20,7 +20,8 @@ export const DOCS_ROOT = 'https://docs.copilotkit.ai/angular/google-adk';
 /**
  * working   — implemented and exercisable against the local stack.
  * partial   — implemented, but something outside this repo limits it
- *             (a premium license, a runtime capability this repo does not run).
+ *             (an Intelligence license, a runtime capability this repo does
+ *             not run).
  * reference — intentionally not a live feature; notes surface only.
  * broken    — implemented but currently failing.
  */
@@ -43,8 +44,12 @@ export interface RouteMeta {
   status: RouteStatus;
   /** Shown in the route header when the status is not plain "working". */
   statusNote?: string;
-  /** Feature requires a CopilotKit Enterprise Intelligence license. */
-  premium?: boolean;
+  /**
+   * Feature requires a CopilotKit Intelligence license. The docs called this
+   * tier "Enterprise Intelligence" until the 2026-09-24 sync, which renamed it
+   * and moved its overview from `premium/overview` to `intelligence/overview`.
+   */
+  intelligence?: boolean;
   /**
    * This route owns a live interactive surface, which lives at `<path>/demo`
    * rather than on the page itself. The doc route keeps the explanation and the
@@ -140,7 +145,7 @@ export const NAV: NavGroup[] = [
           'A decision tool that pauses the run until the user answers, plus a headless interrupt controller.',
         status: 'working',
         statusNote:
-          'The tool path is live. The interrupt panel is mounted but stays idle unless the agent emits an AG-UI interrupt.',
+          'The tool path is live. Both interrupt panels — the store controller and the typed one — are mounted behind a switch, but stay idle unless the agent emits an AG-UI interrupt.',
       },
       {
         path: '/shared-state',
@@ -164,9 +169,9 @@ export const NAV: NavGroup[] = [
         summary:
           'A hand-built thread list on injectThreads, and the drop-in CopilotThreadsDrawer beside a chat.',
         status: 'partial',
-        premium: true,
+        intelligence: true,
         statusNote:
-          'Thread endpoints come from the Enterprise Intelligence Platform. Unlicensed, the list stays empty and the drawer renders its locked state — which is the expected result here.',
+          'Thread endpoints come from CopilotKit Intelligence. Unlicensed, the list stays empty and the drawer renders its locked state — which is the expected result here.',
       },
       {
         path: '/memory',
@@ -176,7 +181,7 @@ export const NAV: NavGroup[] = [
         summary:
           'injectMemories with the isAvailable() gate the guide requires before showing memory controls.',
         status: 'partial',
-        premium: true,
+        intelligence: true,
         statusNote:
           'This runtime does not provide the memory routes, so isAvailable() is false and the guide’s fallback message is what renders.',
       },

@@ -51,9 +51,9 @@ import { ALL_ROUTES, docUrl } from '../lib/nav-config';
               </td>
               <td class="py-3 pr-4">
                 <ui-status-badge [status]="route.status" />
-                @if (route.premium) {
+                @if (route.intelligence) {
                   <div class="mt-1 text-xs font-semibold text-violet-700">
-                    Premium
+                    Intelligence
                   </div>
                 }
               </td>

@@ -28,9 +28,9 @@ import { Callout, DocSample, Panel, SourceCode, TryIt } from '../components/ui';
       </ui-try-it>
 
       <ui-callout tone="warn" title="Thread endpoints are a platform capability">
-        Threads are served by the Enterprise Intelligence Platform through the
-        runtime, not by Google ADK. Without a license key the list is empty by design
-        — that is not a bug in this harness.
+        Threads are served by CopilotKit Intelligence through the runtime, not
+        by Google ADK. Without a license key the list is empty by design — that
+        is not a bug in this harness.
       </ui-callout>
 
       <ui-panel heading="Resume a specific thread">

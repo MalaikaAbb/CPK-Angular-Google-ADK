@@ -49,7 +49,7 @@ quickstart uses. There is no ADK-specific server-side wrapper to import.
 |---|---|---|
 | Node.js | 22+ (built on 24.16.0) | The Angular quickstart specifies Node 22. |
 | npm | 10+ (built on 12.0.1) | Or pnpm/yarn. |
-| Angular CLI | 20, 21, or 22 (built on 22.1.3) | `@copilotkit/angular` supports these three majors only. |
+| Angular CLI | 22 (built on 22.1.3) | `@copilotkit/angular` supports this major only. The 2026-09-24 doc sync narrowed the policy from 20–22 to 22. |
 | Python | 3.13+ (per `backend/.python-version`) | Built on 3.13.13. |
 | [`uv`](https://docs.astral.sh/uv/) | 0.11+ (built on 0.11.20) | Used for the backend. `pip` works too. |
 | Google AI Studio API key | — | **Required.** [Get one here](https://aistudio.google.com/apikey). |

@@ -93,6 +93,31 @@ Gemini  (gemini-2.5-flash)</code></pre>
         </ul>
       </ui-panel>
 
+      <ui-panel heading="Already have Google ADK sessions?">
+        <p class="text-sm text-slate-700">
+          The Introduction page closes on a path this harness cannot exercise.
+          When you add a user-facing app to an existing ADK agent, CopilotKit
+          Intelligence can import persisted ADK sessions as Rich Threads, so
+          users can open conversations they started elsewhere. It reads ADK
+          database session stores and Vertex / Agent Engine session history;
+          legacy pickle stores need migrating first.
+        </p>
+        <p class="mt-3 text-sm text-slate-700">
+          The import runs once. Later CopilotKit-mediated runs synchronize with
+          Intelligence and continue through ADK's native persistence when the
+          agent uses a durable session service — it is not a continuous mirror
+          of runs made outside CopilotKit.
+        </p>
+        <p class="mt-3 text-sm text-slate-700">
+          Nothing here is importable, and the reason is one line of
+          <code>backend/main.py</code>: this agent runs
+          <code>use_in_memory_services=True</code>, and the docs are explicit
+          that in-memory sessions cannot be exported. Swapping in a database
+          session service is the prerequisite, and an Intelligence license is
+          the other.
+        </p>
+      </ui-panel>
+
       <ui-panel heading="The runtime binding">
         <p class="mb-3 text-sm text-slate-700">
           This is the one file that ties CopilotKit to Google ADK. It is read off disk
