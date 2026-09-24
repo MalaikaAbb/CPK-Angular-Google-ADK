@@ -28,7 +28,7 @@
     "@angular/router": "^22.1.0",
     "@angular/ssr": "^22.1.3",
     "@copilotkit/angular": "^0.5.2",
-    "@copilotkit/runtime": "^1.71.0",
+    "@copilotkit/runtime": "^1.73.3",
     "express": "^5.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

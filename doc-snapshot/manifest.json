@@ -1,32 +1,32 @@
 {
   "schema": 1,
   "docsRoot": "https://docs.copilotkit.ai/angular/google-adk",
-  "syncedAt": "2026-08-18T06:50:34.566Z",
+  "syncedAt": "2026-09-24T08:49:25.119Z",
   "pages": {
     "/angular/google-adk": {
       "file": "angular__google-adk.md",
-      "sha256": "11cb171f45afba92c7e1a7c2b5985dfe2dc4b9ccb991e2fc388912793f10461e",
-      "bytes": 8293,
-      "lines": 218,
+      "sha256": "516f7a64384c8b262d242cf4f073d0f5be83dbe365198a80c51dadbd25eb298a",
+      "bytes": 10248,
+      "lines": 262,
       "routes": [
         "/",
         "/doc-sync"
       ],
       "status": "ok",
       "age": 0,
-      "date": "Tue, 18 Aug 2026 06:50:35 GMT"
+      "date": "Thu, 24 Sep 2026 08:49:25 GMT"
     },
     "/angular/google-adk/guides/a2ui": {
       "file": "angular__google-adk__guides__a2ui.md",
-      "sha256": "dacf64a8c68f8d506962d43065f026f40daccc3cdc18dd2c5fd95489d9e1a397",
-      "bytes": 5849,
+      "sha256": "e34ec1c6358342eed8fe281dc115d4c3177457a867ebd1bf73fe982f507ea95b",
+      "bytes": 5829,
       "lines": 195,
       "routes": [
         "/a2ui"
       ],
       "status": "ok",
       "age": 0,
-      "date": "Tue, 18 Aug 2026 06:50:35 GMT"
+      "date": "Thu, 24 Sep 2026 08:49:25 GMT"
     },
     "/angular/google-adk/guides/chat-ui": {
       "file": "angular__google-adk__guides__chat-ui.md",
@@ -38,31 +38,31 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Tue, 18 Aug 2026 06:50:35 GMT"
+      "date": "Thu, 24 Sep 2026 08:49:26 GMT"
     },
     "/angular/google-adk/guides/frontend-tools-generative-ui": {
       "file": "angular__google-adk__guides__frontend-tools-generative-ui.md",
-      "sha256": "085ddd26b3668b60566435e06af0606c2a1dae5b41c3a08113848bee75eed1b6",
-      "bytes": 5732,
-      "lines": 178,
+      "sha256": "70260c056cc327ba56e1c2a66838128c6a64b0801a037c6257190bec3789d6b2",
+      "bytes": 7888,
+      "lines": 236,
       "routes": [
         "/frontend-tools-generative-ui"
       ],
       "status": "ok",
       "age": 0,
-      "date": "Tue, 18 Aug 2026 06:50:35 GMT"
+      "date": "Thu, 24 Sep 2026 08:49:25 GMT"
     },
     "/angular/google-adk/guides/human-in-the-loop": {
       "file": "angular__google-adk__guides__human-in-the-loop.md",
-      "sha256": "b696677488fd25878e25617d9ff3ec79ef3dc929a68772b5b59e54de92d7f1d7",
-      "bytes": 7176,
-      "lines": 227,
+      "sha256": "ac34ada15a0fd94c79cba9fdf2548425b8dc6849be00411bb0c260a43d532af2",
+      "bytes": 8992,
+      "lines": 274,
       "routes": [
         "/human-in-the-loop"
       ],
       "status": "ok",
       "age": 0,
-      "date": "Tue, 18 Aug 2026 06:50:35 GMT"
+      "date": "Thu, 24 Sep 2026 08:49:25 GMT"
     },
     "/angular/google-adk/guides/shared-state": {
       "file": "angular__google-adk__guides__shared-state.md",
@@ -74,7 +74,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Tue, 18 Aug 2026 06:50:35 GMT"
+      "date": "Thu, 24 Sep 2026 08:49:25 GMT"
     },
     "/angular/google-adk/guides/threads-memory-attachments-headless": {
       "file": "angular__google-adk__guides__threads-memory-attachments-headless.md",
@@ -89,7 +89,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Tue, 18 Aug 2026 06:50:35 GMT"
+      "date": "Thu, 24 Sep 2026 08:49:26 GMT"
     },
     "/angular/google-adk/guides/voice-multimodal": {
       "file": "angular__google-adk__guides__voice-multimodal.md",
@@ -101,25 +101,26 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Tue, 18 Aug 2026 06:50:35 GMT"
+      "date": "Thu, 24 Sep 2026 08:49:26 GMT"
     },
     "/angular/google-adk/quickstart": {
       "file": "angular__google-adk__quickstart.md",
-      "sha256": "11cb171f45afba92c7e1a7c2b5985dfe2dc4b9ccb991e2fc388912793f10461e",
-      "bytes": 8293,
-      "lines": 218,
+      "sha256": "1b676d40ae66b88874a5bd3ae372121768bbf56c1c4dcbda1aa0ef53871cceea",
+      "bytes": 9277,
+      "lines": 247,
       "routes": [
         "/quickstart"
       ],
       "status": "ok",
       "age": 0,
-      "date": "Tue, 18 Aug 2026 06:50:35 GMT"
+      "date": "Thu, 24 Sep 2026 08:49:26 GMT"
     }
   },
   "sitemap": {
-    "fetchedAt": "2026-08-18T06:50:34.566Z",
+    "fetchedAt": "2026-09-24T08:49:25.119Z",
     "urlsUnderRoot": 2,
     "knownUnmapped": [
+      "https://docs.copilotkit.ai/angular/google-adk/deploy-langsmith",
       "https://docs.copilotkit.ai/angular/google-adk/shared-state/workflow-execution"
     ]
   }

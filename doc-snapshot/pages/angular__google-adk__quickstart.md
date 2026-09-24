@@ -2,6 +2,7 @@
 
 > Connect an Angular app to Copilot Runtime with CopilotKit.
 
+
 `@copilotkit/angular` provides Angular components, directives, and services for CopilotKit. This guide gets you to a working Angular app with a chat UI backed by [Copilot Runtime](/angular/google-adk/backend/copilot-runtime). When you select an agent backend in the sidebar, the backend step below changes with it; without a selection, the guide uses CopilotKit's `BuiltInAgent`.
 
 The runtime runs on your server, keeps model credentials out of the browser, and exposes the `default` agent that `CopilotChat` uses automatically.
@@ -9,9 +10,15 @@ The runtime runs on your server, keeps model credentials out of the browser, and
 <OpsPlatformCTA
   variant="inline"
   title="Take your Angular copilot from local to production"
-  body="Add durable threads, inspection, and managed or self-hosted Enterprise Intelligence without changing the Angular frontend APIs in this guide."
+  body="Add threads, inspection, and cloud-hosted or self-hosted CopilotKit Intelligence without changing the Angular frontend APIs in this guide."
   surface="docs:angular/quickstart:production"
 />
+
+## Start with your coding agent
+
+Use this prompt to connect your Angular app to Copilot Runtime with the selected agent backend, then verify a working conversation. You can also follow the manual steps below.
+
+Ask your coding agent to follow the setup steps on this page for your selected framework and frontend.
 
 ## What is CopilotKit for Angular?
 
@@ -22,7 +29,7 @@ headless APIs, and it supports zoneless applications.
 ## Prerequisites
 
 - An OpenAI API key (or another model provider supported by [Model Selection](/angular/model-selection))
-- Angular 20, 21, or 22
+- Angular 22
 - Node.js 22
 
 ## Getting started
@@ -31,7 +38,7 @@ headless APIs, and it supports zoneless applications.
     <Step>
         ### Create your Angular app
 
-        If you don't have one already, pin the CLI to one of the supported majors. This example uses Angular 22:
+        If you don't have one already, pin the CLI to the supported major:
 
         ```bash
         npx @angular/cli@22 new my-copilot-app
@@ -77,41 +84,51 @@ headless APIs, and it supports zoneless applications.
         shared; the backend setup below comes from that integration's canonical
         showcase source.
 
-        First, pass `AGUIToolset()` in your `LlmAgent`'s `tools=` list and pair it
-with `stop_on_terminal_text` as the `after_model_callback`. The toolset is
-what makes every CopilotKit feature on the frontend — frontend tools, shared
-state, agent context, and generative UI components — visible to your ADK
-agent on every turn.
+        Pass `AGUIToolset()` in your `LlmAgent`'s `tools=` list to expose
+CopilotKit's frontend tools and generative UI components to the agent.
+Use an ADK-supported model available to your project.
 
+The callback below preserves the Gemini termination safeguard: it stops on
+final text with a `STOP` finish reason, while leaving partial responses and
+pending tool calls alone. It is defined here in full, not imported from
+`ag-ui-adk` or a showcase-only module.
 
-~~~~python title="hitl_in_chat_agent.py"
-from google.adk.agents import LlmAgent
+```python
 from ag_ui_adk import AGUIToolset
+from google.adk.agents import LlmAgent
+from google.adk.agents.callback_context import CallbackContext
+from google.adk.models.llm_response import LlmResponse
 
-from agents.shared_chat import get_model, stop_on_terminal_text
 
-# CopilotKit wires into ADK via the `AGUIToolset()` tool: pass it in the
-# `tools=` list of your `LlmAgent` to expose CopilotKit's frontend-tool
-# channel to the model. `stop_on_terminal_text` is a small ADK callback
-# that lets CopilotKit's UI know when the agent has finished its turn.
-_INSTRUCTION = (
-    "You are a planning assistant. When the user asks you to plan something, "
-    "always call generate_task_steps with the proposed list of steps (each "
-    "with description + status='enabled'). The frontend will render the "
-    "steps inline and the user will confirm or reject — your job is to plan "
-    "and call the tool, then summarise the user's decision once they "
-    "respond."
-)
+def stop_on_terminal_text(
+    callback_context: CallbackContext, llm_response: LlmResponse
+) -> None:
+    content = llm_response.content
+    if llm_response.partial or not content or content.role != "model":
+        return
+    finish_reason = llm_response.finish_reason
+    if getattr(finish_reason, "name", finish_reason) != "STOP":
+        return
+    parts = content.parts or []
+    if not any(part.text for part in parts) or any(part.function_call for part in parts):
+        return
+    # ADK's invocation context is private; tolerate SDK changes.
+    invocation = getattr(callback_context, "_invocation_context", None)
+    if invocation is not None:
+        try:
+            invocation.end_invocation = True
+        except AttributeError:
+            pass
 
-hitl_in_chat_agent = LlmAgent(
-    name="HitlInChatAgent",
-    model=get_model(),
-    instruction=_INSTRUCTION,
+
+agent = LlmAgent(
+    name="assistant",
+    model="gemini-3.1-flash-lite",
+    instruction="Help the user and call the available frontend tools when appropriate.",
     tools=[AGUIToolset()],
     after_model_callback=stop_on_terminal_text,
 )
-~~~~
-
+```
 
 <Accordions>
   <Accordion title="Install the SDK">
@@ -204,13 +221,25 @@ hitl_in_chat_agent = LlmAgent(
         Angular → Copilot Runtime → your selected agent backend.
       </Step>
     
+    <Step>
+        ### Open Inspector and confirm setup
+
+On localhost, click the Inspector button in the corner of the app.
+
+1. Open **Agents**, then **Agent**. Your agent is listed.
+2. Send a chat message. Open **Agents**, then **AG-UI Events**. Events are moving.
+3. Open **Rich Threads**. The list is unlocked (Intelligence is on), or locked with Enable Intelligence (Intelligence is off).
+
+More detail: [Inspector](/angular/google-adk/inspector).
+
+    </Step>
 
 </Steps>
 
 ## Next steps
 
 - [Runtime and backend docs](backend/copilot-runtime): configure the server, secure requests, and deploy without leaving the selected Angular surface.
-- [Enterprise Intelligence](premium/overview): add durable threads, inspection, and cloud-hosted or self-hosted operations.
+- [CopilotKit Intelligence](intelligence/overview): add threads, inspection, and cloud-hosted or self-hosted operations.
 - [Angular task guides](guides/chat-ui): build chat UI, tools, generative UI, interrupts, shared state, threads, memory, attachments, and headless UI.
 - [Angular feature examples](features): find runnable examples and canonical shared Angular source for each supported feature.
 - [Angular API reference](/reference/angular): use components, signals, tools, context, and runtime services.
