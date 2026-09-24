@@ -46,7 +46,10 @@ import { Callout, Panel, SourceCode, TryIt } from '../components/ui';
               <td class="py-2 pr-4">
                 The backend agent emits an AG-UI interrupt
               </td>
-              <td class="py-2"><code>injectInterrupt</code></td>
+              <td class="py-2">
+                <code>AgentStore.interruptController</code>,
+                <code>injectInterrupt</code>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -85,18 +88,57 @@ import { Callout, Panel, SourceCode, TryIt } from '../components/ui';
         the agent with no frontend handler registered will hang the run.
       </ui-callout>
 
-      <ui-panel heading="The interrupt controller">
+      <ui-panel heading="The interrupt controller from the store">
         <p class="mb-3 text-sm text-slate-700">
-          Mounted above the chat in the demo, but headless — it renders nothing
-          until the backend emits an AG-UI interrupt (or the legacy
-          <code>on_interrupt</code> custom event). The Google ADK agent in this
-          repo does not emit one, so this half stays idle. The controller clears
-          stale decisions when the thread changes, and
+          An interrupt is a state of one conversation — this agent, this thread,
+          this run, waiting for a decision. The store that already exposes that
+          conversation's messages and state exposes its pending interrupt too,
+          so a component holding a store needs nothing else. The controller is
+          created and connected with the store, then destroyed when the store is
+          torn down or replaced.
+        </p>
+        <p class="mb-3 text-sm text-slate-700">
+          This is the default path. It is unfiltered and untyped — the payload
+          arrives as <code>unknown</code> — which is the trade for needing no
+          wiring.
+        </p>
+        <ui-source
+          path="src/app/features/hitl/store-interrupt-panel.component.ts"
+        />
+      </ui-panel>
+
+      <ui-panel heading="The typed interrupt controller">
+        <p class="mb-3 text-sm text-slate-700">
+          <code>injectInterrupt</code> subscribes to one agent and exposes the
+          pending decision as signals. Reach for it when the store default is
+          not enough: a typed payload, an <code>enabled</code> filter so several
+          components can split interrupts from one agent, or a
+          <code>handler</code> that prepares data before the view appears. It
+          takes the agent id positionally —
+          <code>injectInterrupt&lt;ReviewRequest&gt;('default')</code>; the
+          options object is a retained compatibility overload.
+        </p>
+        <p class="mb-3 text-sm text-slate-700">
+          Both controllers are headless — they render nothing until the backend
+          emits an AG-UI interrupt (or the legacy <code>on_interrupt</code>
+          custom event). The Google ADK agent in this repo does not emit one, so
+          this half of the demo stays idle. Either controller clears stale
+          decisions when the thread changes, and
           <code>resolve</code>/<code>cancel</code> share one in-flight resume
           promise so a double click cannot start two resume runs.
         </p>
         <ui-source path="src/app/features/hitl/interrupt-panel.component.ts" />
       </ui-panel>
+
+      <ui-callout tone="warn" title="Render one controller per decision">
+        Do not render an <code>injectInterrupt</code> controller and
+        <code>store().interruptController</code> for the same decision. Both
+        observe the agent independently, so the same interrupt becomes visible
+        in both and two UI actions could try to resume the same run. Both panels
+        here watch the <code>default</code> agent, so the demo puts them behind a
+        switch and mounts exactly one — see
+        <code>hitl-chat.component.ts</code> above.
+      </ui-callout>
     </div>
   `,
 })

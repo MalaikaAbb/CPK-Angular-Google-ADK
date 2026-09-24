@@ -22,7 +22,28 @@ import { Callout, Panel, SourceCode, TryIt } from '../components/ui';
         </p>
       </ui-try-it>
 
-      <ui-panel heading="1 · The runtime, bound to the Google ADK agent">
+      <ui-panel heading="1 · The Google ADK agent">
+        <p class="mb-3 text-sm text-slate-700">
+          <code>AGUIToolset()</code> in the <code>tools=</code> list is what
+          exposes CopilotKit's frontend tools and generative UI components to
+          the agent. <code>stop_on_terminal_text</code> is the Gemini
+          termination safeguard: it ends the invocation on final text with a
+          <code>STOP</code> finish reason, and leaves partial responses and
+          pending tool calls alone.
+        </p>
+        <p class="mb-3 text-sm text-slate-700">
+          Earlier revisions of the quickstart imported that callback from
+          <code>agents.shared_chat</code>, a showcase-only module that is not on
+          PyPI, so it could not be wired up here. The page now defines it in
+          full, so this backend runs it.
+        </p>
+        <ui-source
+          path="backend/main.py"
+          note="model and getWeather are ours; the callback is the page's"
+        />
+      </ui-panel>
+
+      <ui-panel heading="2 · The runtime, bound to the Google ADK agent">
         <p class="mb-3 text-sm text-slate-700">
           The Angular quickstart's backend step defers to the selected
           integration: "Configure Copilot Runtime to register this backend as
@@ -35,7 +56,7 @@ import { Callout, Panel, SourceCode, TryIt } from '../components/ui';
         <ui-source path="server.ts" />
       </ui-panel>
 
-      <ui-panel heading="2 · Import the styles">
+      <ui-panel heading="3 · Import the styles">
         <p class="mb-3 text-sm text-slate-700">
           The package stylesheet is self-contained — the chat renders without
           any other CSS. It is the first import in the global stylesheet, ahead
@@ -44,7 +65,7 @@ import { Callout, Panel, SourceCode, TryIt } from '../components/ui';
         <ui-source path="src/styles.css" note="first ~10 lines are the doc step" />
       </ui-panel>
 
-      <ui-panel heading="3 · Connect to Copilot Runtime">
+      <ui-panel heading="4 · Connect to Copilot Runtime">
         <p class="mb-3 text-sm text-slate-700">
           One provider at the application root. The extra
           <code>a2ui</code> and <code>openGenerativeUI</code> options belong to
@@ -53,8 +74,34 @@ import { Callout, Panel, SourceCode, TryIt } from '../components/ui';
         <ui-source path="src/app/app.config.ts" />
       </ui-panel>
 
-      <ui-panel heading="4 · Add the chat UI">
+      <ui-panel heading="5 · Add the chat UI">
         <ui-source path="src/app/features/quickstart/quickstart-chat.ts" />
+      </ui-panel>
+
+      <ui-panel heading="6 · Open Inspector and confirm setup">
+        <p class="mb-3 text-sm text-slate-700">
+          The quickstart's closing step, and the only one that needs no code:
+          <code>enableInspector</code> defaults to on for development browser
+          builds and is always off in production and during server rendering,
+          so <code>ng serve</code> mounts the Inspector button in the corner on
+          its own. This app sets no <code>enableInspector</code> in
+          <code>app.config.ts</code>, so the default is what runs.
+        </p>
+        <ol class="ml-5 list-decimal space-y-1 text-sm text-slate-700">
+          <li>
+            Open <strong>Agents</strong>, then <strong>Agent</strong>. The
+            <code>default</code> agent is listed.
+          </li>
+          <li>
+            Send a chat message. Open <strong>Agents</strong>, then
+            <strong>AG-UI Events</strong>. Events are moving.
+          </li>
+          <li>
+            Open <strong>Rich Threads</strong>. Unlicensed — the case here — it
+            is locked with <em>Enable Intelligence</em>, which is the expected
+            result and matches what the Threads route reports.
+          </li>
+        </ol>
       </ui-panel>
 
       <ui-callout title="Verify the runtime before blaming the frontend">

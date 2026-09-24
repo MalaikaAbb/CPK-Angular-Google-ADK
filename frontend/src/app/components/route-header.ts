@@ -15,10 +15,10 @@ import { StatusBadge } from './ui';
         <div class="flex flex-wrap items-center gap-3">
           <h1 class="text-2xl font-bold tracking-tight text-[var(--ink)]">{{ meta.title }}</h1>
           <ui-status-badge [status]="meta.status" />
-          @if (meta.premium) {
+          @if (meta.intelligence) {
             <span
               class="rounded-full bg-violet-100 px-2.5 py-0.5 text-xs font-semibold text-violet-800"
-              >Premium</span
+              >Intelligence</span
             >
           }
         </div>
