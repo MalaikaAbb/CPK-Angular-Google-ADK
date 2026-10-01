@@ -22,6 +22,7 @@ import { QuickstartChat } from '../features/quickstart/quickstart-chat';
 import { SharedStateChatComponent } from '../features/shared-state/shared-state-chat.component';
 import { ThreadsDemoComponent } from '../features/threads/threads-demo.component';
 import { ToolsChatComponent } from '../features/tools/tools-chat.component';
+import { OrderSearchComponent } from '../features/webmcp/order-search.component';
 
 @Component({
   selector: 'app-quickstart-demo',
@@ -120,3 +121,16 @@ export class AttachmentsDemo {}
   ></app-demo-frame>`,
 })
 export class HeadlessDemo {}
+
+@Component({
+  selector: 'app-webmcp-demo',
+  imports: [DemoFrame, OrderSearchComponent],
+  template: `<app-demo-frame backTo="/webmcp">
+    <app-order-search />
+    <p class="p-4 text-sm text-slate-700">
+      <code>searchOrders</code> is registered on
+      <code>document.modelContext</code> while this page is open.
+    </p>
+  </app-demo-frame>`,
+})
+export class WebmcpDemo {}
