@@ -156,6 +156,17 @@ export const NAV: NavGroup[] = [
           'Reading and writing agent state through injectAgentStore, and publishing read-only app context two ways.',
         status: 'working',
       },
+       {
+        path: '/webmcp',
+        hasDemo: true,
+        title: 'WebMCP',
+        docPath: '/angular/google-adk/webmcp',
+        summary:
+          'An existing frontend tool published to document.modelContext with webmcp, so a compatible browser agent can discover and call it.',
+        status: 'working',
+        statusNote:
+          'Experimental in the browser: needs Chrome 149+ with the WebMCP origin trial or flag. Without document.modelContext, CopilotKit registers nothing and the page is unaffected.',
+      },
     ],
   },
   {
