@@ -21,6 +21,7 @@ const TARGETS = [
   'src/app/app.config.ts',
   'src/app/features',
   '../backend/main.py',
+  '../backend/agents',
 ];
 
 const EXTENSIONS = ['.ts', '.html', '.css', '.py'];

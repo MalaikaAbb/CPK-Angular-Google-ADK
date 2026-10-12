@@ -250,7 +250,7 @@ More detail: [Inspector](/angular/google-adk/inspector).
 
 ## Already have Google ADK sessions?
 
-When you add a user-facing app to an existing ADK agent, your users may need to open and continue sessions they started elsewhere. [CopilotKit Intelligence](/angular/google-adk/intelligence/overview) can import persisted ADK sessions as Rich Threads, bringing that history into your CopilotKit app.
+When you add a user-facing app to an existing ADK agent, your users may need to open and continue sessions they started elsewhere. [CopilotKit Intelligence](/angular/google-adk/intelligence/overview) can import persisted ADK sessions as threads, bringing that history into your CopilotKit app.
 
 The importer supports ADK database session stores and Vertex/Agent Engine session history. In-memory sessions cannot be exported; legacy pickle stores need migration first.
 

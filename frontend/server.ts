@@ -32,6 +32,10 @@ const runtime = new CopilotRuntime({
   agents: {
     default: new HttpAgent({ url: agentUrl }),
     support: new HttpAgent({ url: agentUrl }),
+    // The sub-agents supervisor, mounted by backend/main.py at /subagents.
+    // `subagents` is the agent id the Angular Showcase uses for this demo.
+    // https://docs.copilotkit.ai/angular/google-adk/multi-agent/subagents
+    subagents: new HttpAgent({ url: new URL("subagents", agentUrl).href }),
   },
   a2ui: {},
 });

@@ -19,12 +19,13 @@ Browser (Angular 22, zoneless)                ← :4200
   │  POST http://localhost:8200/api/copilotkit
   ▼
 Copilot Runtime  ·  localhost:8200            ← Node, frontend/server.ts
-  │  agents: { default, support } → new HttpAgent({ url })
+  │  agents: { default, support, subagents } → new HttpAgent({ url })
   │  a2ui: {}  → A2UIMiddleware
   │  POST http://localhost:8000/              ← AG-UI over SSE
   ▼
 Google ADK agent  ·  localhost:8000           ← Python / FastAPI, backend/main.py
   │  add_adk_fastapi_endpoint(app, ADKAgent(adk_agent=agent), path="/")
+  │  add_adk_fastapi_endpoint(app, ADKAgent(adk_agent=subagents_root_agent), path="/subagents")
   ▼
 Gemini  (gemini-2.5-flash)
 ```
@@ -36,6 +37,12 @@ Only the Python process holds it.
 process. `default` is the id CopilotKit's prebuilt components use with no
 configuration; `support` exists so the Chat UI and Threads guides' snippets —
 written as `agentId="support"` — run exactly as published.
+
+**`subagents` is a different agent.** The Sub-agents guide defines its own
+supervisor `LlmAgent` (`gemini-3.1-flash-lite`, three delegation tools, no
+`AGUIToolset`). `backend/main.py` mounts it at `POST /subagents`, as the
+showcase does, and `server.ts` registers it under the key `subagents` — the id
+the Angular Showcase uses for this demo.
 
 **The binding is `HttpAgent`.** `ag_ui_adk` serves the AG-UI protocol directly
 over SSE, so the generic `HttpAgent` from `@ag-ui/client` is what the ADK
@@ -172,6 +179,7 @@ The agent's own routes, mounted by `add_adk_fastapi_endpoint`:
 | `/` | POST | The AG-UI endpoint. A `GET` here answers **405** — that is expected, not a fault. |
 | `/capabilities` | GET | Returns `{}` with a 200. This is what the connection panel probes. |
 | `/agents/state` | POST | Agent state access. |
+| `/subagents` | POST | The sub-agents supervisor's AG-UI endpoint. |
 
 ```bash
 curl -s -o /dev/null -w '%{http_code}\n' http://localhost:8000/capabilities   # 200
@@ -272,6 +280,9 @@ Commit `doc-snapshot/` — `pages/`, `manifest.json` and `CHANGELOG.md` are the 
 google-adk/
 ├── backend/
 │   ├── main.py            # LlmAgent + ADKAgent + add_adk_fastapi_endpoint, :8000
+│   ├── agents/
+│   │   ├── shared_chat.py     # the quickstart's stop_on_terminal_text, shared
+│   │   └── subagents_agent.py # Sub-agents guide: supervisor + 3 sub-agents
 │   └── pyproject.toml     # google-adk, ag-ui-adk, fastapi, uvicorn
 └── frontend/
     ├── server.ts          # Copilot Runtime — the one file binding CopilotKit to ADK

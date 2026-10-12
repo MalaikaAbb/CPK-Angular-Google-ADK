@@ -8,6 +8,74 @@ Holds the 3 most recent dated entries. When a change lands on a fourth
 date, the oldest entry is dropped. Entries are counted, not aged, so a gap of
 weeks between changes does not expire anything.
 
+## 2026-10-12
+
+### 12:40 UTC — 5 pages, highest severity high
+
+**High — A2UI schemas, styling, and recovery**
+
+`/angular/google-adk/guides/a2ui` · route `/a2ui` · under “Choose a schema strategy” · in a `typescript` block
+
+24 code lines, 1 heading, 17 prose lines changed. The number of fenced code blocks changed.
+
+````diff
+- // features/a2ui/a2ui-catalogs.ts
+- const fixedDefinitions = {
++ // features/a2ui/a2ui-definitions.ts
++ export const fixedDefinitions = {
+- };
++ } satisfies A2UICatalogDefinitions;
++ A catalog is required: without one, A2UI stays off even when the runtime
++ enables it, and CopilotKit logs a warning.
+````
+
+**High — Voice and multimodal input**
+
+`/angular/google-adk/guides/voice-multimodal` · route `/voice-multimodal` · under “Accept voice input”
+
+5 code lines, 1 heading, 15 prose lines changed. The number of fenced code blocks changed.
+
+````diff
+- access. Your Runtime must also have transcription configured; a visible
+- microphone does not make an unavailable transcription service succeed.
++ access.
++ 
++ ### Configure Runtime transcription
++ 
++ Follow the [Voice backend setup](/angular/google-adk/guides/voice-multimodal#backend) to add a dedicated Runtime
++ route and transcription service. Keep speech-provider credentials separate
+````
+
+**Low — Introduction**
+
+`/angular/google-adk` · routes `/`, `/doc-sync` · under “Already have Google ADK sessions?”
+
+2 prose lines changed.
+
+````diff
+- When you add a user-facing app to an existing ADK agent, your users may need to open and continue sessions they started elsewhere. [CopilotKit Intelligence](/angular/google-adk/intelligence/overview) can import persisted ADK sessions as Rich Threads, bringing that history into your CopilotKit app.
++ When you add a user-facing app to an existing ADK agent, your users may need to open and continue sessions they started elsewhere. [CopilotKit Intelligence](/angular/google-adk/intelligence/overview) can import persisted ADK sessions as threads, bringing that history into your CopilotKit app.
+````
+
+**Low — Frontend tools and generative UI**
+
+`/angular/google-adk/guides/frontend-tools-generative-ui` · route `/frontend-tools-generative-ui` · under “Choose a generative UI path”
+
+2 prose lines changed.
+
+````diff
+- | A2UI | A server emits A2UI operations or snapshots | Runtime capability turns on the built-in renderer; an optional `a2ui` config supplies a catalog or theme |
++ | A2UI | A server emits A2UI operations or snapshots | Set `a2ui.catalog` in `provideCopilotKit` to turn on the built-in renderer; without a catalog A2UI stays off |
+````
+
+**Info — WebMCP**
+
+`/angular/google-adk/webmcp` · route `/webmcp`
+
+Now tracked for the first time.
+
+---
+
 ## 2026-09-24
 
 ### 08:49 UTC — 5 pages, highest severity high
@@ -90,6 +158,8 @@ weeks between changes does not expire anything.
 - - **Hashbrown is unsupported.** The stable Hashbrown Angular package does not support the complete Angular 20 through 22 policy.
 + - **Hashbrown is unsupported.** The stable Hashbrown Angular package does not support the Angular 22 policy.
 ````
+
+---
 
 ---
 
