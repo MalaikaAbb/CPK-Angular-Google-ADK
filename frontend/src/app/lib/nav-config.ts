@@ -217,6 +217,20 @@ export const NAV: NavGroup[] = [
     ],
   },
   {
+    title: 'Multi-agent',
+    routes: [
+      {
+        path: '/subagents',
+        hasDemo: true,
+        title: 'Sub-agents',
+        docPath: '/angular/google-adk/multi-agent/subagents',
+        summary:
+          'A supervisor delegating to research, writing, and critique sub-agents, with a live delegation log driven by shared state.',
+        status: 'working',
+      },
+    ],
+  },
+  {
     title: 'Doc Sync',
     routes: [
       {

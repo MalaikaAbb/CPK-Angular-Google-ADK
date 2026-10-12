@@ -57,6 +57,10 @@ export const routes: Routes = [
     path: 'webmcp/demo',
     loadComponent: () => import('./pages/demos').then((m) => m.WebmcpDemo),
   },
+  {
+    path: 'subagents/demo',
+    loadComponent: () => import('./pages/demos').then((m) => m.SubagentsDemo),
+  },
 
   // Doc routes, inside the sidebar chrome.
   {
@@ -93,6 +97,7 @@ export const routes: Routes = [
       { path: 'status', loadComponent: () => import('./pages/status') },
       { path: 'doc-sync', loadComponent: () => import('./pages/doc-sync') },
       { path: 'webmcp', loadComponent: () => import('./pages/webmcp') },
+      { path: 'subagents', loadComponent: () => import('./pages/subagents') },
       { path: '**', redirectTo: '' },
     ], 
   },
