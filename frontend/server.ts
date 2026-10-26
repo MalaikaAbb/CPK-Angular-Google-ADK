@@ -20,13 +20,24 @@
  * https://docs.copilotkit.ai/angular/google-adk/backend/copilot-runtime
  */
 import { createServer } from "node:http";
-import { CopilotRuntime } from "@copilotkit/runtime/v2";
+import { CopilotKitIntelligence, CopilotRuntime } from "@copilotkit/runtime/v2";
 import { createCopilotNodeListener } from "@copilotkit/runtime/v2/node";
 import { HttpAgent } from "@ag-ui/client";
 
 // backend/main.py mounts the ADK AG-UI endpoint on POST / and binds port 8000.
 const agentUrl =
   process.env["GOOGLE_ADK_AGENT_URL"] ?? "http://localhost:8000/";
+
+// Create the Intelligence client with your project API key. Keep this key on the server.
+const intelligence = new CopilotKitIntelligence({
+  apiKey: process.env["CPK_INTELLIGENCE_API_KEY"]!,
+});
+
+async function authenticateApplicationUser(
+  _request: Request,
+): Promise<{ id: string; name: string } | null> {
+  return { id: "local-user", name: "Local user" };
+}
 
 const runtime = new CopilotRuntime({
   agents: {
@@ -38,6 +49,13 @@ const runtime = new CopilotRuntime({
     subagents: new HttpAgent({ url: new URL("subagents", agentUrl).href }),
   },
   a2ui: {},
+  intelligence,
+  // Identify the user from a verified session or token
+  identifyUser: async (request) => {
+    const user = await authenticateApplicationUser(request);
+    if (!user) throw new Error("Unauthorized");
+    return { id: user.id, name: user.name };
+  },
 });
 
 const port = Number(process.env["PORT"] ?? 8200);

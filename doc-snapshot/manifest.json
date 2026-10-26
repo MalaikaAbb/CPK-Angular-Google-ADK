@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "docsRoot": "https://docs.copilotkit.ai/angular/google-adk",
-  "syncedAt": "2026-10-12T12:40:19.836Z",
+  "syncedAt": "2026-10-21T10:40:33.443Z",
   "pages": {
     "/angular/google-adk": {
       "file": "angular__google-adk.md",
@@ -14,7 +14,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Mon, 12 Oct 2026 12:40:20 GMT"
+      "date": "Wed, 21 Oct 2026 10:40:34 GMT"
     },
     "/angular/google-adk/guides/a2ui": {
       "file": "angular__google-adk__guides__a2ui.md",
@@ -26,7 +26,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Mon, 12 Oct 2026 12:40:20 GMT"
+      "date": "Wed, 21 Oct 2026 10:40:34 GMT"
     },
     "/angular/google-adk/guides/chat-ui": {
       "file": "angular__google-adk__guides__chat-ui.md",
@@ -38,7 +38,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Mon, 12 Oct 2026 12:40:20 GMT"
+      "date": "Wed, 21 Oct 2026 10:40:34 GMT"
     },
     "/angular/google-adk/guides/frontend-tools-generative-ui": {
       "file": "angular__google-adk__guides__frontend-tools-generative-ui.md",
@@ -50,7 +50,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Mon, 12 Oct 2026 12:40:20 GMT"
+      "date": "Wed, 21 Oct 2026 10:40:34 GMT"
     },
     "/angular/google-adk/guides/human-in-the-loop": {
       "file": "angular__google-adk__guides__human-in-the-loop.md",
@@ -62,7 +62,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Mon, 12 Oct 2026 12:40:20 GMT"
+      "date": "Wed, 21 Oct 2026 10:40:34 GMT"
     },
     "/angular/google-adk/guides/shared-state": {
       "file": "angular__google-adk__guides__shared-state.md",
@@ -74,7 +74,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Mon, 12 Oct 2026 12:40:20 GMT"
+      "date": "Wed, 21 Oct 2026 10:40:34 GMT"
     },
     "/angular/google-adk/guides/threads-memory-attachments-headless": {
       "file": "angular__google-adk__guides__threads-memory-attachments-headless.md",
@@ -89,7 +89,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Mon, 12 Oct 2026 12:40:21 GMT"
+      "date": "Wed, 21 Oct 2026 10:40:34 GMT"
     },
     "/angular/google-adk/guides/voice-multimodal": {
       "file": "angular__google-adk__guides__voice-multimodal.md",
@@ -101,7 +101,19 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Mon, 12 Oct 2026 12:40:20 GMT"
+      "date": "Wed, 21 Oct 2026 10:40:34 GMT"
+    },
+    "/angular/google-adk/multi-agent/subagents": {
+      "file": "angular__google-adk__multi-agent__subagents.md",
+      "sha256": "78955f38a99e33783a8ad7c2f0dcac41accc1e060d43bda3e6be2e1d746334bb",
+      "bytes": 31114,
+      "lines": 851,
+      "routes": [
+        "/subagents"
+      ],
+      "status": "ok",
+      "age": 0,
+      "date": "Wed, 21 Oct 2026 10:40:34 GMT"
     },
     "/angular/google-adk/quickstart": {
       "file": "angular__google-adk__quickstart.md",
@@ -113,7 +125,7 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Mon, 12 Oct 2026 12:40:20 GMT"
+      "date": "Wed, 21 Oct 2026 10:40:34 GMT"
     },
     "/angular/google-adk/webmcp": {
       "file": "angular__google-adk__webmcp.md",
@@ -125,11 +137,11 @@
       ],
       "status": "ok",
       "age": 0,
-      "date": "Mon, 12 Oct 2026 12:40:21 GMT"
+      "date": "Wed, 21 Oct 2026 10:40:34 GMT"
     }
   },
   "sitemap": {
-    "fetchedAt": "2026-10-12T12:40:19.836Z",
+    "fetchedAt": "2026-10-21T10:40:33.443Z",
     "urlsUnderRoot": 2,
     "knownUnmapped": [
       "https://docs.copilotkit.ai/angular/google-adk/deploy-langsmith",
